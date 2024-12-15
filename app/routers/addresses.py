@@ -31,7 +31,7 @@ def get_shipping_address(
         raise HTTPException(status_code=404, detail="Shipping address not found.")
     return address
 
-@router.post("/", response_model=schemas.ShippingAddress)
+@router.post("/", status_code= status.HTTP_201_CREATED, response_model=schemas.ShippingAddress)
 def create_shipping_address(
     address: schemas.ShippingAddressCreate,
     db: Session = Depends(database.get_db),

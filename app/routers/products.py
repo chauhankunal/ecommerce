@@ -19,7 +19,6 @@ def create_product(
     
     if current_user.role not in [models.UserRole.SELLER, models.UserRole.ADMIN]:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorized to perform this action")
-    print(type(current_user.id))
     data = crud.create_product(db=db, product=product, owner_id=current_user.id)
     return data
 
